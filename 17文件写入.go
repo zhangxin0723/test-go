@@ -34,6 +34,20 @@ func copyFile() {
 	}
 }
 
+func readDir() {
+	files, err := os.ReadDir("./测试读取文件夹")
+	if err != nil {
+		panic("读取目录失败")
+	}
+	for _, file := range files {
+		info, err := file.Info()
+		if err != nil {
+			panic("获取文件信息失败")
+		}
+		println(file.Name(), info.Name())
+	}
+}
+
 func main() {
 	// err := os.WriteFile("写入测试文件1.txt", []byte("hello world1"), 0777)
 	// if err != nil {
@@ -41,5 +55,6 @@ func main() {
 	// }
 
 	// writeFile()
-	copyFile()
+	// copyFile()
+	readDir()
 }
